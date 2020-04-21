@@ -1,8 +1,10 @@
 # ConcileTime : 
 
-Welcome to ConcileTime. 
+This code sample project accompanies the Naïve Sherpa Blog Post Series.  See the bottom of this README for links to the associated blog posts.
 
 ## Description
+
+Welcome to ConcileTime.  
 
 ## Requirements
 
@@ -32,15 +34,6 @@ File / Folder | Purpose
 `web/` | front-end UI
 `package.json` | project metadata and configuration
 `readme.md` | this readme
-
-
-## More...
-
-Find more in the [help.sap.com](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/00823f91779d4d42aa29a498e0535cdf.html)
-
-## Commands...
-
-cf create-service conciletime-uaa
 
 ## License
  Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
