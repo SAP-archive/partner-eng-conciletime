@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+<title>web</title>
+</head>
+<body style="font-family: Tahoma, Geneva, sans-serif">
+<strong>ConcileTime</strong><br />
+<br />
+<!-- <a href="https://hanaexpress-sap-di-local-npm-registry.us.sap-a-team.com/%40sap%2Fxsenv">Query Local NPM Registry</a><br /> -->
+<a href="catalog">ODATA Catalog</a> Provided by the srv module.<br />
+<a href=catalog/metadata>catalog/$metadata</a> Provided by the srv module, Metadata.<br />
+<iframe width="800" height="600" src="https://qtrial2019q2az1.az1.qualtrics.com/jfe/form/SV_3WTHBnmyjnxXHgN" frameborder="0" allowfullscreen></iframe>
+<p>Authorization troubleshooting hint:</p><br />
+<p>Browse to this URL and inspect the authorities to confirm the user has the expected roles.</p>
+<p>api=$(xs api | grep endpoint | tr -s ' ' | cut -d ' ' -f 3) ; apiinfo=$(echo -n $api"/v2/info") ; echo $apiinfo ; uaa=$(curl -k -s $apiinfo | tr "," "\n" | grep authorizationEndpoint | cut -d '"' -f 4) ; cnfwho=$(echo -n $uaa"/config?action=who") ; echo $cnfwho</p>
+
+</body>
+</html>

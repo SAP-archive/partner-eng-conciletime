@@ -1,0 +1,32 @@
+{
+	"xsappname": "ConcileTime",
+	"description": "Business App that helps to (re)Concile Time.",
+	"scopes": [
+		{
+			"name": "$XSAPPNAME.view", 
+			"description": "View data"
+		},
+		{
+			"name": "$XSAPPNAME.create",
+			"description": "Create data"
+		}
+
+	],
+	"role-templates":[
+		{
+			"name": "ConcileTimeManager", 
+			"description": "Role for creating and viewing data",
+			"scope-references": [ 
+				"$XSAPPNAME.create",
+				"$XSAPPNAME.view" 
+			]
+		},
+		{
+			"name": "ConcileTimeMultiUser",
+			"description": "Role for viewing data only",
+			"scope-references":  [ 
+				"$XSAPPNAME.view" 
+			]
+		}
+	]
+}

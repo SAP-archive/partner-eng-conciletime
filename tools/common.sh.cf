@@ -1,0 +1,13 @@
+#!/bin/bash
+#org="HANAExpress"
+#org="aeio"
+org="A-Team_muilti-prov"
+#tenant="HXE"
+tenant="P2D" 
+#host="hxehost"
+#host="p2sb.psg.tax.us.deloitte.com"
+host="zeus.hana.prod.us-east-1.whitney.dbaas.ondemand.com"
+#port="39015"
+port="20674"
+inst="00"
+xsa_user=""

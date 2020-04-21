@@ -1,0 +1,27 @@
+PROCEDURE "collect_slice"( 
+	in in_acct nvarchar(32),
+	in in_app nvarchar(255),
+	in in_doc nvarchar(255),
+	in in_validfrom nvarchar(24),
+	in in_validto nvarchar(24),
+	out ex_message NVARCHAR(255) )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+	INSERT INTO "RESCUETIME_SLICES" VALUES(
+		NEWUID()/*ID <NVARCHAR(36)>*/,
+		NOW()/*MODIFIEDAT <SECONDDATE>*/,
+		NOW()/*CREATEDAT <SECONDDATE>*/,
+		'mitm'/*CREATEDBY <NVARCHAR(255)>*/,
+		'mitm'/*MODIFIEDBY <NVARCHAR(255)>*/,
+		:in_validfrom/*VALIDFROM <SECONDDATE>*/,
+		:in_validto/*VALIDTO <SECONDDATE>*/,
+		:in_acct/*ACCOUNT <NVARCHAR(5000)>*/,
+		:in_app/*APPLICATION <NVARCHAR(5000)>*/,
+		:in_doc/*DOCUMENT <NVARCHAR(5000)>*/
+	);	
+	
+	ex_message = 'CollectSlice row inserted into RESCUETIME_SLICES with acct: '  || :in_acct || ' app: ' || :in_app || '.';
+END

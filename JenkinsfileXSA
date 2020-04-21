@@ -1,0 +1,14 @@
+@Library('piper-library-os-xs') _
+node() {
+    stage('prepare') {
+        checkout scm
+        setupCommonPipelineEnvironment script:this, configFile: '.pipeline/configXSA.yml'
+    }
+    stage('Build') {
+        mtaBuild script: this
+    }
+    stage('deploy') {
+        xsDeploy script: this
+        slackSendNotification script: this
+    }
+}

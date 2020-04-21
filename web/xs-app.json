@@ -1,0 +1,17 @@
+{
+  "welcomeFile": "index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "(catalog/)(.*)",
+      "destination": "odata_be",
+      "csrfProtection": true,
+      "authenticationType": "xsuaa"
+    },
+    {
+      "localDir": "resources",
+      "source": "^/(.*)",
+      "authenticationType": "none"
+    }
+  ]
+}

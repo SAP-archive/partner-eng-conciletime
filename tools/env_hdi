@@ -1,0 +1,116 @@
+#!/bin/bash
+do_run=1 # Execute(evaluate) the commands
+#do_run=0 # Don't evaluate any commands
+#
+MY_DIR=$(dirname $(readlink -f $0))
+. $MY_DIR/common.sh
+#echo $?
+if [ $? -eq 1 ]; then
+  echo ""
+  echo "Copy the $MY_DIR/common.sh.template file to $MY_DIR/common.sh and adjust before continuing."
+  echo ""
+  cmd='cp '$MY_DIR/common.sh.template' '$MY_DIR/common.sh
+  echo $cmd
+  echo ""
+  cmd='vi '$MY_DIR/common.sh
+  echo $cmd
+  echo ""
+  exit
+fi
+echo ""
+echo "Including common.sh from "$MY_DIR
+echo ""
+echo "host:$host port:$port tenant:$tenant org:$org xsa_user:$xsa_user"
+xsorcf=$1
+container=$2
+version=$3
+echo "xsorcf:$xsorcf container:$container space:$space"
+echo ""
+#exit
+dowait=""
+doexport1=""
+doexport2=""
+if [ "$#" -eq 3 ]; then
+  if [ $xsorcf = "xs" ]; then
+    dowait=" --wait-indefinitely"
+    doexport1=" --export-json /dev/stdout 2>/dev/null | tail -n +5 > /dev/xscfenv.out"
+    echo "XS cool."
+  else
+    if [ $xsorcf = "cf" ]; then
+      doexport1=" | tail -n +5 | head -n -11 > /dev/xscfenv.out"
+      doexport2=" | head -n -1"
+      echo "CF cool."
+    else
+      echo "Not XS or CF, try again."
+      exit 1
+    fi
+  fi
+
+  container_uc=$(echo "$container" | tr a-z A-Z)
+  container_lc=$(echo "$container" | tr A-Z a-z)
+
+  version_uc=$(echo "$version" | tr a-z A-Z)
+  version_lc=$(echo "$version" | tr A-Z a-z)
+
+  echo Environment of Container $container_uc in Org: $org Space: $space with Version: $version_uc Starting...
+  echo ""
+
+  cmd=$xsorcf' target -o '$org' -s '$space
+  echo $cmd
+  #eval $cmd
+
+  cmd=$xsorcf' service '$container_uc'_'$version_uc
+  echo $cmd
+  #if [ $do_run -eq 1 ]; then eval $cmd; fi
+  #RESULT=$?
+
+  #echo 'HDI SERVICE RESULT:'$RESULT
+
+  echo ""
+#
+
+  cmd=$xsorcf' env '$container_lc'-db '$doexport1
+  echo $cmd
+  if [ $do_run -eq 1 ]; then eval $cmd; fi
+  echo ""
+
+  cmd='HDI_SCHEMA=$(cat /dev/xscfenv.out | jq -r '"'"'.VCAP_SERVICES.hana[0].credentials.schema'"'"$doexport2')'
+  #echo $cmd
+  if [ $do_run -eq 1 ]; then eval $cmd; fi
+  echo 'export HDI_SCHEMA='$HDI_SCHEMA
+
+  cmd='HDI_USER=$(cat /dev/xscfenv.out | jq -r '"'"'.VCAP_SERVICES.hana[0].credentials.user'"'"$doexport2')'
+  #echo $cmd
+  if [ $do_run -eq 1 ]; then eval $cmd; fi
+  echo 'export HDI_USER='$HDI_USER
+
+  cmd='HDI_PASS=$(cat /dev/xscfenv.out | jq -r '"'"'.VCAP_SERVICES.hana[0].credentials.password'"'"$doexport2')'
+  #echo $cmd
+  if [ $do_run -eq 1 ]; then eval $cmd; fi
+  echo 'export HDI_PASS='$HDI_PASS
+
+  cmd='HDI_HOST=$(cat /dev/xscfenv.out | jq -r '"'"'.VCAP_SERVICES.hana[0].credentials.host'"'"$doexport2')'
+  #echo $cmd
+  if [ $do_run -eq 1 ]; then eval $cmd; fi
+  echo 'export HDI_HOST='$HDI_HOST
+
+  cmd='HDI_PORT=$(cat /dev/xscfenv.out | jq -r '"'"'.VCAP_SERVICES.hana[0].credentials.port'"'"$doexport2')'
+  #echo $cmd
+  if [ $do_run -eq 1 ]; then eval $cmd; fi
+  echo 'export HDI_PORT='$HDI_PORT
+  echo ""
+  echo 'echo $HDI_SCHEMA'
+  echo 'echo $HDI_USER'
+  echo 'echo $HDI_PASS'
+  echo 'echo $HDI_HOST'
+  echo 'echo $HDI_PORT'
+
+  #exit 1
+
+else
+    echo "Usage ./env_hdi xs[cf] container version"
+    exit 1
+fi
+echo ""
+echo Environment of Container $container Finished
+echo ""

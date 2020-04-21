@@ -1,0 +1,11 @@
+#!/bin/bash
+org="deloitte"
+tenant="P2D"
+host="p2sb.psg.tax.us.deloitte.com"
+port="30015"
+inst="00"
+xsa_user="APPAEIO"
+sys_user="SYSTEM"
+sys_pass="Nirvana####1"
+hdb_user="BIBO_USER"
+hdb_pass="Nirvana####1"

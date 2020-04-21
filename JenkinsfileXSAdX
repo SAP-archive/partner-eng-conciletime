@@ -1,0 +1,23 @@
+@Library('piper-library-os-xs') _
+node() {
+    stage('prepare') {
+        checkout scm
+        setupCommonPipelineEnvironment script:this, configFile: '.pipeline/configXSA.yml'
+    }
+    stage('Build') {
+        mtaBuild script: this
+    }
+    stage('deploy') {
+        dockerExecute(dockerImage: 'alunde/xsa-cli') {
+          sh "xs api https://api.parvus.lcfx.net:443 --skip-ssl-validation"
+          sh "xs l -u XSA_ADMIN -p Plak8484 -o lcfx -s DEV"
+          sh "echo ${PATH}"
+          sh "echo ${commonPipelineEnvironment.configuration.steps.dockerExecute.XSA.space}"
+          sh "echo Generated archive /var/jenkins_home/workspace/ConcileTimeXSA/conciletime.mtar"
+          sh "echo Outside Docker /var/lib/docker/volumes/jenkins_home_volume/_data/workspace/ConcileTimeXSA/conciletime.mtar"
+          sh "echo 'commonPipelineEnvironment.getMtarFilePath()'"
+          sh "xs deploy /var/jenkins_home/workspace/ConcileTimeXSA/conciletime.mtar"
+        }
+        mailSendNotification script: this
+    }
+}
