@@ -12,6 +12,9 @@ This repository contains a complete project this is intended to accompany a seri
 
  - A grasp of [micro-services architecture](https://12factor.net/) and a sense of [SAP's Cloud Application Programming model](https://cap.cloud.sap/docs/).
 
+## Download and Installation
+
+ - Clone this repo [https://github.tools.sap/partnereng/partner-eng-conciletime](https://github.tools.sap/partnereng/partner-eng-conciletime) into your local system or IDE of choice.
  
 ## Limitations
 
@@ -24,6 +27,10 @@ This example project contains no known issues.
 ## How to obtain support
 
 This project is provided "as-is" with no expectation for major changes or support.  However, you may attempt to contact the repo owner with questions.
+
+## Contributing
+
+Contributions are currently not being accepted since the project is provided on an "as-is" basis.
 
 ## To-Do (upcoming changes)
 
