@@ -1,9 +1,0 @@
-Navigate to the GitHub repository alundesap/conciletime and add webbhook manually using the data below if not yet done. A webhook enables the repository to start jobs.
-
-Webhook data can be also retrieved using the button "Webhook Data" in job view.
-
-Webhook Data
-Payload URLhttps://cloudciservice.cfapps.eu10.hana.ondemand.com/v1/github_events/account/4c8b401f-1816-40bf-9057-6b97062867f4
-Content typeapplication/json
-Secret a641fef73bf01b45b087fa55e604498b39a015ba0d9dbb23167f4c37d0790a09
-
