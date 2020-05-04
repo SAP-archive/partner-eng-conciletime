@@ -1,0 +1,16 @@
+{
+  "name": "web",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "engines": {
+    "node": ">=12.14.0"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@sap/approuter": "6.7.2"
+  },
+  "scripts": {
+    "start": "node node_modules/@sap/approuter/approuter.js"
+  }
+}

@@ -1,0 +1,80 @@
+## Generated mta.yaml based on yo sap-partner-eng version 0.1.02
+## appName = conciletime
+## language=nodejs; multiTenant=false
+## approuter=conciletime-app
+_schema-version: '3.1'
+ID: conciletime
+version: 0.0.1
+description: ConcileTime
+parameters:
+  enable-parallel-deployments: true  
+build-parameters:
+  before-all:
+   - builder: custom
+     commands:
+      - npm install
+      - npx cds build
+
+modules:
+
+### New Modules Here ###
+
+# cf push conciletime-app -p app -n conciletime-app -d conciletime.com -k 256M -m 256M
+ - name: conciletime-app
+   type: html5
+   path: app
+   build-parameters:
+      ignore: ["node_modules/"]
+   parameters:
+      host: conciletime-app-${space}
+      domain: conciletime.com
+      #routes:
+      #  - route: conciletime-app-${space}-${app-name}.${default-domain}
+      disk-quota: 256M
+      memory: 256M
+   provides:
+    - name: Router_api
+      properties:
+         url: ${default-url}
+         application: ${app-name}
+   requires:
+   # cf bind-service conciletime-app CONCILETIME_UAA
+    - name: conciletime-uaa
+   ### New Destinations Here ###
+
+resources:
+
+### New Resources Here ###
+
+# cf create-service xsuaa application CONCILETIME_UAA -c ./xs-security.json
+ - name: conciletime-uaa
+   requires:
+    - name: Router_api
+   properties:
+      XSAPPNAME: ${xsuaa-app}
+   parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+      service-name: CONCILETIME_UAA
+      xsuaa-app: ${space}-~{Router_api/application}
+      config:
+         xsappname: ${xsuaa-app}
+   type: org.cloudfoundry.managed-service
+
+# - name: MTAppRegistry
+#   type: org.cloudfoundry.managed-service
+#   requires:
+#    - name: MTAppUAA
+#   parameters:
+#    service: saas-registry
+#    service-plan: application
+#    service-name: MTAppRegistry
+#    config:
+#      xsappname: ~{MTAppUAA/XSAPPNAME}
+#      appName: MTApp
+#      displayName: MTApp
+#      description: 'Multitenant&nbspBusiness&nbspApp&nbspbased&nbspon&nbspNode.js'
+#      category: 'Digital&nbspPartner&nbspEngineering'
+#      appUrls:
+#        onSubscription:  https://${org}-${space}-mtappbackend.${default-domain}/callback/v1.0/tenants/{tenantId}
