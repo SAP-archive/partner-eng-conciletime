@@ -4,7 +4,7 @@ This code sample project accompanies the Naïve Sherpa Blog Post Series.  See th
 
 ## Description
 
-This repository contains a complete project this is intended to accompany a series with the theme [Naïve Sherpa](https://blogs.sap.com/2019/07/22/00-naive-sherpa-meet-the-naive-sherpa/).  The goal of the repository owner is to sychronize a tag of the repo that is coordinated with the publishing of a corresponding blog posting.  As this project grows the owner/author invites other who may wish to contribute to the development efforts.
+This repository contains a complete project that is intended to accompany a series with the theme [Naïve Sherpa](https://blogs.sap.com/2019/07/22/00-naive-sherpa-meet-the-naive-sherpa/).  The goal of the repository owner is to synchronize  a tag of the repo that is coordinated with the publishing of a corresponding blog posting.  It provides a fully functional multitenant application based on the Cloud Application Programming(CAP) development model illustrating integration techniques.  As this project grows the owner/author invites other who may wish to contribute to the development efforts.
 
 ## Requirements
 
@@ -58,6 +58,5 @@ File / Folder | Purpose
 `xs-security` | security profile configuration
 
 ## License
- Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
- This file is licensed under the SAP SAMPLE CODE LICENSE AGREEMENT except as noted otherwise in the [LICENSE file](LICENSE).
+ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved. This file is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE file](LICENSE).
 
