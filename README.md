@@ -4,7 +4,7 @@ This code sample project accompanies the Naïve Sherpa Blog Post Series.  See th
 
 ## Description
 
-This repository contains a complete project that is intended to accompany a series with the theme [Naïve Sherpa](https://blogs.sap.com/2019/07/22/00-naive-sherpa-meet-the-naive-sherpa/).  The goal of the repository owner is to sychronize a tag of the repo that is coordinated with the publishing of a corresponding blog posting.  It provides a fully functional multitenant application based on the Cloud Application Programming(CAP) development model.   As this project grows the owner/author invites other who may wish to contribute to the development efforts.
+This repository contains a complete project that is intended to accompany a series with the theme [Naïve Sherpa](https://blogs.sap.com/2019/07/22/00-naive-sherpa-meet-the-naive-sherpa/).  The goal of the repository owner is to synchronize  a tag of the repo that is coordinated with the publishing of a corresponding blog posting.  It provides a fully functional multitenant application based on the Cloud Application Programming(CAP) development model illustrating integration techniques.  As this project grows the owner/author invites other who may wish to contribute to the development efforts.
 
 ## Requirements
 
