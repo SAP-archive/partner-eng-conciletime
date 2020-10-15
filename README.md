@@ -1,3 +1,5 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/partner-eng-conciletime)](https://api.reuse.software/info/github.com/SAP-samples/partner-eng-conciletime)
+
 # ConcileTime 
 
 This code sample project accompanies the Naïve Sherpa Blog Post Series.  See the bottom of this README for links to the associated blog posts.
@@ -58,5 +60,5 @@ File / Folder | Purpose
 `xs-security` | security profile configuration
 
 ## License
- Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved. This file is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE file](LICENSES/Apache-2.0.txt).
+Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved. This file is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE file](LICENSES/Apache-2.0.txt).
 
