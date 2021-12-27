@@ -10,7 +10,7 @@ This repository contains a complete project that is intended to accompany a seri
 
 ## Requirements
 
- - A productive [Cloud Foundry account provided by SAP Cloud Platorm](https://help.sap.com/viewer/product/CP/).  While some aspects may be possible to demonstrate with a trial account, the scope and duration of this project lends it to the features of a full productive account.
+ - A productive [Cloud Foundry account provided by SAP Business Technology Platform](https://help.sap.com/viewer/product/CP/).  While some aspects may be possible to demonstrate with a trial account, the scope and duration of this project lends it to the features of a full productive account.
 
  - A grasp of [micro-services architecture](https://12factor.net/) and a sense of [SAP's Cloud Application Programming model](https://cap.cloud.sap/docs/).
 
